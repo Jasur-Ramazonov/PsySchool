@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.ant-menu-item:first-child {
+  margin: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+
+  align-items: center;
+  gap: 15px;
+  font-size: 25px;
+  font-weight: 700;
+}
+.ant-menu-item:first-child:hover {
+  cursor: pointer;
+}
+li {
+  padding-left: 20px !important;
+}
+.ant-menu-item {
+  display: flex;
+  gap: 10px;
+  font-size: 22px;
+  margin-top: 5px;
+  padding-left: 0px;
+  margin: 0;
+  border-radius: 0px;
+}
