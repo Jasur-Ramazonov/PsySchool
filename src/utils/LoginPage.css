@@ -1,0 +1,54 @@
+.login-page {
+  background-image: url("/loginBg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.login-cont {
+  background: linear-gradient(-45deg, #0000, #0000 25%, #0000 51%, #204d74);
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 350px;
+  height: 420px;
+  margin-right: 100px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.user-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid white;
+  padding: 15px;
+  border-radius: 50%;
+}
+.login-btn {
+  border: none;
+  width: 100%;
+  background: linear-gradient(to right, #204d74, rgb(55, 55, 55));
+  color: white;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.8s ease, background 0.8s ease;
+  height: 45px;
+}
+.white-placeholder::placeholder {
+  color: white !important;
+  opacity: 0.5;
+}
