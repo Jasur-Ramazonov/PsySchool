@@ -65,7 +65,7 @@ const Mainpage = () => {
                 borderRadius: 0,
                 background: "blue",
                 color: "white",
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -73,15 +73,24 @@ const Mainpage = () => {
               icon: <StatisticLogo />,
               label: <Link to="/statistika">Statistika</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
               key: "3",
               icon: <Resultslogo />,
-              label: <Link to="/natijalar">Natijalar</Link>,
+              label: (
+                <Link
+                  onClick={() => {
+                    console.log("salom");
+                  }}
+                  to="/natijalar"
+                >
+                  Natijalar
+                </Link>
+              ),
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -89,7 +98,7 @@ const Mainpage = () => {
               icon: <CategoriesLogo />,
               label: <Link to="/categories">Kategoriyalar</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -97,7 +106,7 @@ const Mainpage = () => {
               icon: <TestsLogo />,
               label: <Link to="/tests">Testlar</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -105,7 +114,7 @@ const Mainpage = () => {
               icon: <LessonsLogo />,
               label: <Link to="/lessons">Darslar</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -113,7 +122,7 @@ const Mainpage = () => {
               icon: <AdsLogo />,
               label: <Link to="/reklamalar">Reklamalar</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -121,7 +130,7 @@ const Mainpage = () => {
               icon: <RegionsLogo />,
               label: <Link to="/viloyatlar">Viloyatlar</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
             {
@@ -129,7 +138,7 @@ const Mainpage = () => {
               icon: <SignOutLogo />,
               label: <Link to="/log-out">Chiqish</Link>,
               style: {
-                marginBottom: "30px",
+                marginBottom: "20px",
               },
             },
           ]}
