@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
 import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
@@ -16,6 +17,14 @@ import LessonsLogo from "../components/LessonsLogo";
 import AdsLogo from "../components/AdsLogo";
 import RegionsLogo from "../components/RegionsLogo";
 import SignOutLogo from "../components/SignOutLogo";
+import Statistika from "./Statistika";
+import Natijalar from "./Natijalar";
+import Category from "./Category";
+import Lessons from "./Lessons";
+import Test from "./Test";
+import Adds from "./Adds";
+import Viloyatlar from "./Viloyatlar";
+import LogOut from "./LogOut";
 
 const { Header, Sider, Content } = Layout;
 //
@@ -34,10 +43,16 @@ const Mainpage = () => {
         height: "100vh",
       }}
     >
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        width={240}
+        style={{ background: "white" }}
+      >
         <div className="demo-logo-vertical" />
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           defaultSelectedKeys={["1"]}
           items={[
@@ -50,47 +65,72 @@ const Mainpage = () => {
                 borderRadius: 0,
                 background: "blue",
                 color: "white",
+                marginBottom: "30px",
               },
             },
             {
               key: "2",
               icon: <StatisticLogo />,
-              label: "Statistika",
+              label: <Link to="/statistika">Statistika</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "3",
               icon: <Resultslogo />,
-              label: "Natijalar",
+              label: <Link to="/natijalar">Natijalar</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "4",
               icon: <CategoriesLogo />,
-              label: "Kategoriyalar",
+              label: <Link to="/categories">Kategoriyalar</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "5",
               icon: <TestsLogo />,
-              label: "Testlar",
+              label: <Link to="/tests">Testlar</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "6",
               icon: <LessonsLogo />,
-              label: "Darslar",
+              label: <Link to="/lessons">Darslar</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "7",
               icon: <AdsLogo />,
-              label: "Reklamalar",
+              label: <Link to="/reklamalar">Reklamalar</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "8",
               icon: <RegionsLogo />,
-              label: "Viloyatlar",
+              label: <Link to="/viloyatlar">Viloyatlar</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
             {
               key: "9",
               icon: <SignOutLogo />,
-              label: "Chiqish",
+              label: <Link to="/log-out">Chiqish</Link>,
+              style: {
+                marginBottom: "30px",
+              },
             },
           ]}
         />
@@ -134,7 +174,16 @@ const Mainpage = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+          <Routes>
+            <Route path="/statistika" element={<Statistika />} />
+            <Route path="/natijalar" element={<Natijalar />} />
+            <Route path="/categories" element={<Category />} />
+            <Route path="/lessons" element={<Lessons />} />
+            <Route path="/tests" element={<Test />} />
+            <Route path="/reklamalar" element={<Adds />} />
+            <Route path="/viloyatlar" element={<Viloyatlar />} />
+            <Route path="/log-out" element={<LogOut />} />
+          </Routes>
         </Content>
       </Layout>
     </Layout>
