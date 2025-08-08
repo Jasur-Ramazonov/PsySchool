@@ -1,22 +1,8 @@
 import { useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import {
-  ArrowLeftOutlined,
-  ArrowRightOutlined,
-  MoonFilled,
-  SunFilled,
-} from "@ant-design/icons";
-
-import { Button, Layout, Menu, theme } from "antd";
-import MenuLogo from "../components/MenuLogo";
-import StatisticLogo from "../components/StatisticLogo";
-import Resultslogo from "../components/Resultslogo";
-import CategoriesLogo from "../components/CategoriesLogo";
-import TestsLogo from "../components/TestsLogo";
-import LessonsLogo from "../components/LessonsLogo";
-import AdsLogo from "../components/AdsLogo";
-import RegionsLogo from "../components/RegionsLogo";
-import SignOutLogo from "../components/SignOutLogo";
+import { Route, Routes } from "react-router-dom";
+import { MoonFilled, SunFilled } from "@ant-design/icons";
+import { Button, Layout, theme } from "antd";
+import { HiOutlineMenu, HiOutlineArrowRight } from "react-icons/hi";
 import Statistika from "./Statistika";
 import Natijalar from "./Natijalar";
 import Category from "./Category";
@@ -25,153 +11,67 @@ import Test from "./Test";
 import Adds from "./Adds";
 import Viloyatlar from "./Viloyatlar";
 import LogOut from "./LogOut";
+import Sidebar from "../components/Sidebar";
 
-const { Header, Sider, Content } = Layout;
-//
+const { Header, Content } = Layout;
 
-//
 const Mainpage = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const [sun, setSun] = useState(false);
+  const [collapsed, setCollapsed] = useState(false); // sidebar collapse
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   return (
-    <Layout
-      style={{
-        height: "100vh",
-      }}
-    >
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        width={240}
-        style={{ background: "white" }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="light"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={[
-            {
-              key: "1",
-              icon: <MenuLogo />,
-              label: "PsyEdu",
-              style: {
-                margin: 0,
-                borderRadius: 0,
-                background: "blue",
-                color: "white",
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "2",
-              icon: <StatisticLogo />,
-              label: <Link to="/statistika">Statistika</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "3",
-              icon: <Resultslogo />,
-              label: <Link to="/natijalar">Natijalar</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "4",
-              icon: <CategoriesLogo />,
-              label: <Link to="/categories">Kategoriyalar</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "5",
-              icon: <TestsLogo />,
-              label: <Link to="/tests">Testlar</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "6",
-              icon: <LessonsLogo />,
-              label: <Link to="/lessons">Darslar</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "7",
-              icon: <AdsLogo />,
-              label: <Link to="/reklamalar">Reklamalar</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "8",
-              icon: <RegionsLogo />,
-              label: <Link to="/viloyatlar">Viloyatlar</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-            {
-              key: "9",
-              icon: <SignOutLogo />,
-              label: <Link to="/log-out">Chiqish</Link>,
-              style: {
-                marginBottom: "30px",
-              },
-            },
-          ]}
-        />
-      </Sider>
-      <Layout>
+    <div style={{ display: "flex", height: "100vh" }}>
+      {/* Sidebar componentga collapsed prop jo‘natiladi */}
+      <Sidebar collapsed={collapsed} />
+
+      <Layout style={{ flex: 1 }}>
         <Header
           style={{
-            padding: 0,
             background: colorBgContainer,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            paddingBlock: "10px",
+            paddingInline: "20px",
           }}
         >
+          {/* Collapse button */}
           <Button
             type="text"
-            icon={collapsed ? <ArrowRightOutlined /> : <ArrowLeftOutlined />}
             onClick={() => setCollapsed(!collapsed)}
             style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
+              fontSize: "25px",
+              transition: "transform 0.3s ease",
+              transform: collapsed ? "rotate(0deg)" : "rotate(180deg)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
+          >
+            {collapsed ? <HiOutlineMenu /> : <HiOutlineArrowRight />}
+          </Button>
+
+          {/* Theme toggle button */}
           <Button
             onClick={() => setSun(!sun)}
             type="text"
-            style={{ fontSize: "22px", marginRight: "20px" }}
+            style={{ fontSize: "22px" }}
             icon={
               sun ? <MoonFilled style={{ color: "black" }} /> : <SunFilled />
             }
           />
         </Header>
+
         <Content
           style={{
             margin: "24px 16px",
             padding: 24,
-            minHeight: 280,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
+            overflowY: "auto",
           }}
         >
           <Routes>
@@ -186,7 +86,8 @@ const Mainpage = () => {
           </Routes>
         </Content>
       </Layout>
-    </Layout>
+    </div>
   );
 };
+
 export default Mainpage;
